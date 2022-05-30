@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -18,13 +19,13 @@ class Homepage extends StatefulWidget {
 // }
 
 class _HomepageState extends State<Homepage> {
-  late final TextEditingController _email;
-  late final TextEditingController _password;
+  late final TextEditingController _email = TextEditingController();
+  late final TextEditingController _password = TextEditingController();
 
   @override
   void initState() {
-    _email = TextEditingController();
-    _password = TextEditingController();
+    // _email = TextEditingController();
+    // _password = TextEditingController();
     super.initState();
   }
 
@@ -40,18 +41,29 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
+        title: Text('Register'),
       ),
       body: Column(
         children: [
-          const TextField(
+          TextField(
+            controller: _email,
             decoration: InputDecoration(hintText: 'enter your email here'),
           ),
-          const TextField(
+          TextField(
+            controller: _password,
             decoration: InputDecoration(hintText: 'enter your password here'),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
+              final userCredential =
+                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                email: email,
+                password: password,
+              );
+              print(userCredential);
+            },
             child: const Text('Register'),
           ),
         ],
