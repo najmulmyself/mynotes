@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import '../firebase_options.dart';
+// import 'firebase_options.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -55,6 +59,9 @@ class _HomepageState extends State<Homepage> {
           ),
           TextButton(
             onPressed: () async {
+              await Firebase.initializeApp(
+                options: DefaultFirebaseOptions.currentPlatform,
+              );
               final email = _email.text;
               final password = _password.text;
               final userCredential =
