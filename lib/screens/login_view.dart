@@ -1,28 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:mynotes/firebase_options.dart';
 
-import '../firebase_options.dart';
-// import 'firebase_options.dart';
-
-class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-// late final TextEditingController _email;
-// late final TextEditingController _password;
-
-// @override
-// void initState() {
-//   _email = TextEditingController();
-//   _password = TextEditingController();
-//   super.initState();
-// }
-
-class _RegisterViewState extends State<RegisterView> {
+class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email = TextEditingController();
   late final TextEditingController _password = TextEditingController();
 
@@ -40,7 +28,6 @@ class _RegisterViewState extends State<RegisterView> {
     // TODO: implement dispose
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
