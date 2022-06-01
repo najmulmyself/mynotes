@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/screens/homepage.dart';
+import 'package:mynotes/screens/login_view.dart';
 
 import 'firebase_options.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: RegisterView(),
+      home: LoginView(),
     );
   }
 }

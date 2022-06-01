@@ -28,11 +28,12 @@ class _LoginViewState extends State<LoginView> {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: Text('Login'),
       ),
       body: FutureBuilder(
         future: Firebase.initializeApp(
@@ -63,14 +64,18 @@ class _LoginViewState extends State<LoginView> {
                       // );
                       final email = _email.text;
                       final password = _password.text;
-                      final userCredential = await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: email,
-                        password: password,
-                      );
-                      print(userCredential);
+                      try {
+                        final userCredential = await FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
+                          email: email,
+                          password: password,
+                        );
+                        print(userCredential);
+                      } catch (e) {
+                        print('User not found');
+                      }
                     },
-                    child: const Text('Register'),
+                    child: const Text('Login'),
                   ),
                 ],
               );
