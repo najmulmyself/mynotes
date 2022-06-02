@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/firebase_options.dart';
@@ -18,6 +19,12 @@ class HomePage extends StatelessWidget {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
+              final user = FirebaseAuth.instance.currentUser;
+              if (user.emailVerified) {
+                print('User is Verified');
+              } else {
+                print('User is Not verified');
+              }
               return Text('done');
             default:
               return Text('loading....');
