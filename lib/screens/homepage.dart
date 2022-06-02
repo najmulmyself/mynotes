@@ -20,7 +20,11 @@ class HomePage extends StatelessWidget {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
-              if (user.emailVerified) {
+              if (user?.emailVerified ?? false) {
+                //user!.emailVerified
+                //user?.emailVerified ?? false
+                //if this is null then make it false
+
                 print('User is Verified');
               } else {
                 print('User is Not verified');
