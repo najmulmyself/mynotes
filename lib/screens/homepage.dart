@@ -20,22 +20,26 @@ class HomePage extends StatelessWidget {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
+              print(user);
               if (user?.emailVerified ?? false) {
+                return Text('done');
                 //user!.emailVerified
                 //user?.emailVerified ?? false
                 //if this is null then make it false
 
                 print('User is Verified');
               } else {
+                return VerifyEmail();
                 print('User is Not verified');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => VerifyEmail(),
-                  ),
-                );
+                print(user);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => VerifyEmail(),
+                //   ),
+                // );
               }
-              return Text('done');
+            // return Text('done');
             default:
               return Text('loading....');
           }
@@ -57,19 +61,19 @@ class VerifyEmail extends StatefulWidget {
 class _VerifyEmailState extends State<VerifyEmail> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Verify Email'),
-      ),
-      body: Column(
-        children: [
-          Text('Please verify your email address',),
-          TextButton(
-            onPressed: () {},
-            child: Text('send verification code'),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Text(
+          'Please verify your email address',
+        ),
+        TextButton(
+          onPressed: () async {
+            final user = FirebaseAuth.instance.currentUser;
+            await user?.sendEmailVerification();
+          },
+          child: Text('send verification code'),
+        ),
+      ],
     );
   }
 }
