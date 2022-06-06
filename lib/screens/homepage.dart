@@ -61,6 +61,15 @@ class _VerifyEmailState extends State<VerifyEmail> {
       appBar: AppBar(
         title: Text('Verify Email'),
       ),
+      body: Column(
+        children: [
+          Text('Please verify your email address',),
+          TextButton(
+            onPressed: () {},
+            child: Text('send verification code'),
+          ),
+        ],
+      ),
     );
   }
 }
