@@ -28,12 +28,38 @@ class HomePage extends StatelessWidget {
                 print('User is Verified');
               } else {
                 print('User is Not verified');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VerifyEmail(),
+                  ),
+                );
               }
               return Text('done');
             default:
               return Text('loading....');
           }
         },
+      ),
+    );
+  }
+}
+
+// import 'package:flutter/material.dart';
+
+class VerifyEmail extends StatefulWidget {
+  VerifyEmail({Key? key}) : super(key: key);
+
+  @override
+  State<VerifyEmail> createState() => _VerifyEmailState();
+}
+
+class _VerifyEmailState extends State<VerifyEmail> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Verify Email'),
       ),
     );
   }
