@@ -33,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: FutureBuilder(
         future: Firebase.initializeApp(
@@ -49,13 +49,13 @@ class _LoginViewState extends State<LoginView> {
                     keyboardType: TextInputType.emailAddress,
                     controller: _email,
                     decoration:
-                        InputDecoration(hintText: 'enter your email here'),
+                        const InputDecoration(hintText: 'enter your email here'),
                   ),
                   TextField(
                     obscureText: true,
                     controller: _password,
                     decoration:
-                        InputDecoration(hintText: 'enter your password here'),
+                        const InputDecoration(hintText: 'enter your password here'),
                   ),
                   TextButton(
                     onPressed: () async {
@@ -82,7 +82,7 @@ class _LoginViewState extends State<LoginView> {
                 ],
               );
             default:
-              return Text('loading....');
+              return const Text('loading....');
           }
         },
       ),

@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: const Text('Register'),
       ),
       body: FutureBuilder(
         future: Firebase.initializeApp(
@@ -22,16 +22,13 @@ class HomePage extends StatelessWidget {
               final user = FirebaseAuth.instance.currentUser;
               print(user);
               if (user?.emailVerified ?? false) {
-                return Text('done');
+                return const Text('done');
                 //user!.emailVerified
                 //user?.emailVerified ?? false
                 //if this is null then make it false
 
-                print('User is Verified');
               } else {
                 return VerifyEmail();
-                print('User is Not verified');
-                print(user);
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(
@@ -41,7 +38,7 @@ class HomePage extends StatelessWidget {
               }
             // return Text('done');
             default:
-              return Text('loading....');
+              return const Text('loading....');
           }
         },
       ),
@@ -63,7 +60,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
+        const Text(
           'Please verify your email address',
         ),
         TextButton(
@@ -71,7 +68,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
             final user = FirebaseAuth.instance.currentUser;
             await user?.sendEmailVerification();
           },
-          child: Text('send verification code'),
+          child: const Text('send verification code'),
         ),
       ],
     );

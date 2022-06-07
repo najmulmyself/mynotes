@@ -45,7 +45,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: const Text('Register'),
       ),
       body: FutureBuilder(
         future: Firebase.initializeApp(
@@ -61,13 +61,13 @@ class _RegisterViewState extends State<RegisterView> {
                     keyboardType: TextInputType.emailAddress,
                     controller: _email,
                     decoration:
-                        InputDecoration(hintText: 'enter your email here'),
+                        const InputDecoration(hintText: 'enter your email here'),
                   ),
                   TextField(
                     obscureText: true,
                     controller: _password,
                     decoration:
-                        InputDecoration(hintText: 'enter your password here'),
+                        const InputDecoration(hintText: 'enter your password here'),
                   ),
                   TextButton(
                     onPressed: () async {
@@ -99,7 +99,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ],
               );
             default:
-              return Text('loading....');
+              return const Text('loading....');
           }
         },
       ),
