@@ -60,14 +60,14 @@ class _RegisterViewState extends State<RegisterView> {
                     obscureText: false,
                     keyboardType: TextInputType.emailAddress,
                     controller: _email,
-                    decoration:
-                        const InputDecoration(hintText: 'enter your email here'),
+                    decoration: const InputDecoration(
+                        hintText: 'enter your email here'),
                   ),
                   TextField(
                     obscureText: true,
                     controller: _password,
-                    decoration:
-                        const InputDecoration(hintText: 'enter your password here'),
+                    decoration: const InputDecoration(
+                        hintText: 'enter your password here'),
                   ),
                   TextButton(
                     onPressed: () async {
@@ -96,6 +96,13 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                     child: const Text('Register'),
                   ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil('/login/', (route) => false);
+                    },
+                    child: Text('Already have an account ? Log in'),
+                  )
                 ],
               );
             default:
