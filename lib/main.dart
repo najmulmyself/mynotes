@@ -17,10 +17,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: HomePage(),
+      routes: {
+        '/login/': (context) => const LoginView(),
+        '/register/':(context) => const RegisterView(),
+      },
     );
   }
 }
