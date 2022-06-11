@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/firebase_options.dart';
 import 'package:mynotes/screens/login_view.dart';
+import 'package:mynotes/screens/registration_view.dart';
 import 'package:mynotes/screens/verify_email.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,6 +29,7 @@ class HomePage extends StatelessWidget {
             } else {
               return LoginView();
             }
+
             // print(user);
             // if (user?.emailVerified ?? false) {
             //   return const Text('done');
@@ -45,7 +47,8 @@ class HomePage extends StatelessWidget {
             //   //   ),
             //   // );
             // }
-            return LoginView();
+            return const LoginView();
+          // return Text('Hello There');
           // return Text('done');
           default:
             return const CircularProgressIndicator();
