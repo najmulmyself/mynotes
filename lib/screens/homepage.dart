@@ -18,17 +18,19 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
-            final user = FirebaseAuth.instance.currentUser;
-            if (user != null) {
-              if (user.emailVerified) {
-                print('Email is verified');
-              } else {
-                print('111: $user komuna');
-                return VerifyEmail();
-              }
-            } else {
-              return LoginView();
-            }
+            // final user = FirebaseAuth.instance.currentUser;
+            // if (user != null) {
+            //   if (user.emailVerified) {
+            //     print('Email is verified');
+            //   } else {
+            //     print({user.emailVerified});
+            //     return VerifyEmail();
+            //   }
+            // } else {
+            //   return LoginView();
+            // }
+
+            // Code need to refactor from this part || email is not verified yet
 
             // print(user);
             // if (user?.emailVerified ?? false) {
